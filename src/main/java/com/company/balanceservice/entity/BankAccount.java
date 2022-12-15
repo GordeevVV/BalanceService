@@ -19,6 +19,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "Account")
 public class BankAccount {
+    public BankAccount(long balance) {
+        this.balance = balance;
+    }
 
     @Id
     @Column(nullable = false)
