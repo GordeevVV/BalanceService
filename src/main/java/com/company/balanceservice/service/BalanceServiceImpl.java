@@ -1,7 +1,7 @@
 package com.company.balanceservice.service;
 
 import com.company.balanceservice.entity.BankAccount;
-import com.company.balanceservice.repository.AccountRepository;
+import com.company.balanceservice.repository.BankAccountRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +11,11 @@ import java.util.Optional;
 @Service
 public class BalanceServiceImpl implements BalanceService {
     @Autowired
-    AccountRepository accountRepository;
+    BankAccountRepository accountRepository;
 
+    public BankAccount createBalance(Long value) {
+        return accountRepository.save(new BankAccount(value));
+    }
 
     @Override
     public Optional<Long> getBalance(Long id) {
