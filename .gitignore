@@ -1,33 +1,26 @@
-HELP.md
+# Maven
+.mvn/
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### STS ###
-.apt_generated
+# Eclipse
+bin/
 .classpath
-.factorypath
 .project
-.settings
+.settings/
 .springBeans
-.sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDEA
+.idea/
 *.iml
-*.ipr
+out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Cassandra
+.toDelete
 
-### VS Code ###
-.vscode/
+# logs
+*.log
+
+# misc
+*.gz
+
+**/.flattened-pom.xml
