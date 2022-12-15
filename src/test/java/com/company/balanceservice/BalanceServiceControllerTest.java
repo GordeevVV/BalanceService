@@ -43,7 +43,7 @@ public class BalanceServiceControllerTest {
 
     @BeforeEach
     public void setup() {
-        bankAccount = new BankAccount(1,1000);
+        bankAccount = new BankAccount(1000);
         mockMvc = MockMvcBuilders.standaloneSetup(balanceController).build();
     }
 
