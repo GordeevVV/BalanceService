@@ -10,8 +10,12 @@ import java.util.Optional;
 
 @Service
 public class BalanceServiceImpl implements BalanceService {
-    @Autowired
+    private final
     BankAccountRepository accountRepository;
+
+    public BalanceServiceImpl(BankAccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
 
     public BankAccount createBalance(Long value) {
         return accountRepository.save(new BankAccount(value));
