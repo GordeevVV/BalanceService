@@ -1,9 +1,11 @@
 package com.company.balanceservice.controller;
 
 import com.company.balanceservice.entity.BankAccount;
+import com.company.balanceservice.entity.BankAccountDTO;
 import com.company.balanceservice.entity.MessageResponse;
 import com.company.balanceservice.service.BalanceServiceImpl;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +25,8 @@ public class BalanceController {
         this.balanceService = balanceService;
     }
     @PostMapping(value = "account")
-    ResponseEntity<BankAccount> createBalance(@RequestBody Long value){
-        BankAccount savedBankAccount = balanceService.createBalance(value);
+    ResponseEntity<BankAccount> createBalance(RequestEntity<BankAccountDTO> bankAccountDTO){
+        BankAccount savedBankAccount = balanceService.createBalance(bankAccountDTO.getBody().getValue());
         return new ResponseEntity<>(savedBankAccount, HttpStatus.CREATED);
     }
     @GetMapping(value = "account/{id}")
