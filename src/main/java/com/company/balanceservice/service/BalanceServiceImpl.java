@@ -2,9 +2,12 @@ package com.company.balanceservice.service;
 
 import com.company.balanceservice.entity.BankAccount;
 import com.company.balanceservice.repository.BankAccountRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -27,8 +30,8 @@ public class BalanceServiceImpl implements BalanceService {
     }
 
     @Override
-    @Transactional
-    public void changeBalance(Long id, Long value) {
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public synchronized void changeBalance(Long id, Long value) {
         BankAccount bankAccount = accountRepository.findById(id).orElseThrow(() -> new RuntimeException("No such account with ID: " + id));
         bankAccount.setBalance(bankAccount.getBalance() + value);
         accountRepository.save(bankAccount);

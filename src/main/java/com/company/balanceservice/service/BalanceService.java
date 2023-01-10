@@ -20,5 +20,5 @@ interface BalanceService {
      *  @param id идентификатор банковского счёта
      *  @param value сумма денег, которую нужно добавить к банковскому счёту
      */
-    void changeBalance(Long id, Long value);
+    void changeBalance(Long id, Long value) throws InterruptedException;
 }
